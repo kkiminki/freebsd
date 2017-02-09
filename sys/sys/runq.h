@@ -62,6 +62,8 @@ struct runq {
 	struct	rqhead rq_queues[RQ_NQS];
 };
 
+struct rqhead rq_lottery; /*queue to hold threads for the lottery */
+uint32_t total_tix; /* number of maximum tickets for lottery queue */
 void	runq_add(struct runq *, struct thread *, int);
 void	runq_add_pri(struct runq *, struct thread *, u_char, int);
 int	runq_check(struct runq *);
