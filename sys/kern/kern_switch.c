@@ -254,6 +254,8 @@ runq_init(struct runq *rq)
 	bzero(rq, sizeof *rq);
 	for (i = 0; i < RQ_NQS; i++)
 		TAILQ_INIT(&rq->rq_queues[i]);
+	rq->total_tix = 0; /* Initialize the number of tickets in a run queue */
+	TAILQ_INIT(&rq->rq_lottery); /* Initialize the lottery queue */
 }
 
 /*
